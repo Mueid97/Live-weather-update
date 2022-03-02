@@ -8,3 +8,19 @@ const searchTemperature = () => {
         .then(data => displayTemperature(data))
     // console.log(inputField);
 }
+const setInnerText = (id, text) => {
+    document.getElementById(id).innerText = text;
+}
+
+const displayTemperature = temp => {
+    setInnerText('city', temp.name);
+    setInnerText('temperature', temp.main.temp);
+    setInnerText('condition', temp.weather[0].main);
+     console.log(temp);
+
+    //  set weather icon 
+    const url = `http://openweathermap.org/img/wn/${temp.weather[0].icon}@2x.png`;
+    const imgIcon = document.getElementById('weather-icon');
+    imgIcon.setAttribute('src', url);
+}
+
